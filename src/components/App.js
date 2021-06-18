@@ -1,16 +1,41 @@
-import React, {Component, useState} from "react";
-import '../styles/App.css';
+import React, { useEffect, useState} from "react";
 
-class App extends Component {
-    render() {
+var t;
 
-        return(
-            <>
-               
-            </>
-        )
-    }
+const App = () => {
+
+const [timer,setTimer]=useState(new Date().toLocaleTimeString())
+
+useEffect(()=>{ 
+
+t=setInterval(function(){
+
+ setTimer(new Date().toLocaleTimeString()); 
+
+},1000)
+
+return()=>{
+
+clearInterval(t);
+
 }
 
+},[])
+
+return(
+
+ 
+
+<div className="Clock">
+
+ <h3 id="time">{timer}</h3>
+
+ </div>
+
+)
+
+}
+
+ 
 
 export default App;
